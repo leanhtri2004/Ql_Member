@@ -23,7 +23,7 @@ export const Login = () => {
    
     <div className="login-container">
       <div className="login-box">
-        <h2>Đăng nhập</h2>
+        <h2>LOGIN</h2>
         <form onSubmit={handleLogin}>
           <div className="form-group">
             <label>Email</label>

@@ -37,7 +37,7 @@ const navigate = useNavigate();
   return (
     <div className="register-container">
       <div className="register-box">
-        <h2>Đăng ký tài khoản</h2>
+        <h2>REGISTER</h2>
         <form onSubmit={handleSignup}>
           <div className="form-group">
             <label>Email</label>

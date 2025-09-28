@@ -485,25 +485,27 @@ body.dark header {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+background-image: url('/src/assets/img/h1.jpg');
   font-family: Arial, sans-serif;
 }
 
 /* Khung form */
 .register-box {
-  background-image: url(' https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
   padding: 30px 40px;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   width: 400px;
   max-width: 90%;
+  background-color: rgba(35, 23, 23, 0.317);
+    animation: fadeIn 0.7s ease-in-out;
+
 }
 
 /* Tiêu đề */
 .register-box h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #333;
+  color: white;
 }
 
 /* Form group */
@@ -515,7 +517,7 @@ body.dark header {
   display: block;
   font-weight: 600;
   margin-bottom: 8px;
-  color: #444;
+  color: white;
 }
 
 .form-group input {
@@ -574,10 +576,13 @@ body.light header {
   justify-content: center;
   align-items: center;
   width: 100%;
+  min-height: 100vh;
+  background-image: url('/src/assets/img/h1.jpg');
+
 }
 
 .login-box {
-  background: #fff;
+  background: #2b171723;
   padding: 40px 35px;
   border-radius: 15px;
   margin: 50px 0;
@@ -585,13 +590,12 @@ body.light header {
   width: 350px;
   text-align: center;
   animation: fadeIn 0.7s ease-in-out;
-    background-image: url('');
-
+    
 }
 
 .login-box h2 {
   margin-bottom: 25px;
-  color: #333;
+  color: white;
 }
 
 .form-group {
@@ -604,7 +608,7 @@ body.light header {
   font-size: 14px;
   display: block;
   margin-bottom: 5px;
-  color: #444;
+  color:white;
 }
 
 .form-group input {
