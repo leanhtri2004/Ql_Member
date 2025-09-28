@@ -7,6 +7,7 @@ import { Testimonials } from "./component/Testimonials"
 import React, { useEffect } from 'react'
 import { Register } from "./component/Register";
 import {Routes, Route} from 'react-router-dom';
+import { Login } from "./component/Login"
 
 function App() {
 const[dark, setDark]=React.useState(false);
@@ -24,19 +25,7 @@ const[dark, setDark]=React.useState(false);
   return (
   <>
    
-      {/* <MenuBar/>
-       
-        <Banner />
-        
-      <Client />
-
-      <About />
-      <Routes>
-        <Route path="/signup" element={<Register/>}></Route>
-      </Routes>
-      <Testimonials />
-
-      <Footer /> */}
+     
        <MenuBar />
 
       <Routes>
@@ -56,6 +45,7 @@ const[dark, setDark]=React.useState(false);
 
         {/* Trang đăng ký */}
         <Route path="/signup" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
   </>
   )

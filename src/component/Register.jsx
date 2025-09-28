@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseconnect";
+import { Link } from "react-router-dom";
 
 export const Register = () => {
   // State quản lý form
@@ -79,7 +80,7 @@ export const Register = () => {
         {success && <p className="success-text">{success}</p>}
 
         <p className="login-link">
-          Đã có tài khoản? <a href="/login">Đăng nhập</a>
+          Đã có tài khoản? <Link to="/login">Đăng nhập</Link>
         </p>
       </div>
     </div>
