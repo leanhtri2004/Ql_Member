@@ -8,6 +8,7 @@ import React, { useEffect } from 'react'
 import { Register } from "./component/Register";
 import {Routes, Route} from 'react-router-dom';
 import { Login } from "./component/Login"
+import { Poster } from "./poster/Poster"
 
 function App() {
 const[dark, setDark]=React.useState(false);
@@ -26,7 +27,7 @@ const[dark, setDark]=React.useState(false);
   <>
    
      
-       <MenuBar />
+       
 
       <Routes>
         {/* Trang chủ */}
@@ -34,17 +35,20 @@ const[dark, setDark]=React.useState(false);
           path="/"
           element={
             <>
+            <MenuBar />
               <Banner />
               <Client />
               <About />
               <Testimonials />
               <Footer />
+             
             </>
           }
         />
-
+        <Route path="/poster" element={<Poster />} />
         {/* Trang đăng ký */}
         <Route path="/signup" element={<Register />} />
+         {/* Trang đăng nhập */}
         <Route path="/login" element={<Login />} />
       </Routes>
   </>

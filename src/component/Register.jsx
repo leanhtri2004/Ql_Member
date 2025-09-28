@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseconnect";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Register = () => {
   // State quản lý form
@@ -10,7 +10,7 @@ export const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
+const navigate = useNavigate();
   // Hàm xử lý đăng ký
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -24,7 +24,8 @@ export const Register = () => {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      setSuccess("Đăng ký thành công! Hãy đăng nhập.");
+     alert("Đăng ký thành công! Hãy đăng nhập.");
+      navigate("/login");
       setEmail("");
       setPassword("");
       setConfirmPassword("");

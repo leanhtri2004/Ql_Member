@@ -13,7 +13,7 @@ export const Login = () => {
         try{
             await signInWithEmailAndPassword(auth, email, password);
             alert("Đăng nhập thành công!");
-            navigate("/");
+            navigate("/poster");
         }catch(error){
             setError(error.message);
         }
