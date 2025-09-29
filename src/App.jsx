@@ -1,33 +1,40 @@
+import React, { useEffect, useState } from "react";
+
 import { About } from "./component/About"
 import { Banner } from "./component/Banner"
 import { Client } from "./component/Client"
 import { Footer } from "./component/Footer"
 import { MenuBar } from "./component/MenuBar"
 import { Testimonials } from "./component/Testimonials"
-import React, { useEffect } from 'react'
 import { Register } from "./component/Register";
 import {Routes, Route} from 'react-router-dom';
 import { Login } from "./component/Login"
 import { Poster } from "./poster/Poster"
+import { FlashSales} from "./poster/FlashSales"
 
 function App() {
-const[dark, setDark]=React.useState(false);
-    useEffect(()=>{
-  //     if (dark) {
-  //     document.body.classList.add("dark");
-  //     document.body.classList.remove("light");
-  //   } else {
-  //     document.body.classList.add("light");
-  //     document.body.classList.remove("dark");
-  //   }
-  // }, [dark]);
-  document.body.className = dark ? "dark" : "light";
-  }, [dark]);
+  const [theme, setTheme] = useState("light");
+ useEffect(() => {
+    const root = document.documentElement; // chính là thẻ <html>
+    if (theme === "dark") {
+      root.classList.add("dark");
+      root.classList.remove("light");
+    } else {
+      root.classList.add("light");
+      root.classList.remove("dark");
+    }
+  }, [theme]);
+
   return (
   <>
    
      
-       
+       <button
+        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+        style={{ position: "fixed",  right: 30, zIndex: 999 }}
+      >
+        {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+      </button>
 
       <Routes>
         {/* Trang chủ */}
@@ -45,7 +52,11 @@ const[dark, setDark]=React.useState(false);
             </>
           }
         />
-        <Route path="/poster" element={<Poster />} />
+        <Route path="/poster" element={<>
+             <Poster />
+             <FlashSales/>
+
+         </>} />
         {/* Trang đăng ký */}
         <Route path="/signup" element={<Register />} />
          {/* Trang đăng nhập */}

@@ -16,6 +16,7 @@ export const Poster = () => {
             <a href="Woman">Woman</a>
             <a href="Kids">Kids</a>
             <a href="Sales">Sales</a>
+
         </nav>
         <div className='icon-poster'>
             <i className='bx bx-search'></i>
