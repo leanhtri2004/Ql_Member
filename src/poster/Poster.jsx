@@ -11,11 +11,11 @@ export const Poster = () => {
             <img src={logo_poster} alt="logo_poster" />
             </div>
         <nav className='nav-poster'>
-            <a href="Home">Home</a>
-            <a href="Man">Man</a>
-            <a href="Woman">Woman</a>
-            <a href="Kids">Kids</a>
-            <a href="Sales">Sales</a>
+            <a href="#">Home</a>
+            <a href="#">Man</a>
+            <a href="#">Woman</a>
+            <a href="#">Kids</a>
+            <a href="#">Sales</a>
 
         </nav>
         <div className='icon-poster'>

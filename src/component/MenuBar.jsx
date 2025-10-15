@@ -13,6 +13,7 @@ export const MenuBar = () => {
       <a href="/" className="logo">
         <img src={Logo} alt="Logo" />
       </a>
+      
       <nav className="navbar">
         {/* Dùng onClick để gọi handleScroll */}
         <span onClick={() => handleScroll("home")}>Home</span>

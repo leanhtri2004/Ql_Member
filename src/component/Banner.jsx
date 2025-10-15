@@ -5,6 +5,7 @@ export const Banner = () => {
     
     <div className='banner'>
    
+
         <div className='left'>
           <section id="home">
     </section>
