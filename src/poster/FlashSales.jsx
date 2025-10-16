@@ -1,107 +1,91 @@
-import React from "react";
+
+import { FaRegHeart, FaShoppingCart, FaStar, FaRegStar } from 'react-icons/fa';
 import sale from "../assets/img/sale.png";
 import sale1 from "../assets/img/sale1.png";
 import sale2 from "../assets/img/sale2.png";
 import sale3 from "../assets/img/sale3.png";
 import sale4 from "../assets/img/sale4.png";
 import sale5 from "../assets/img/sale5.png";
+
 const products = [
-  {
-    id: 1,
-    img: sale,
-    title: "HAVIT HV-G92 Gamepad",
-    discount: "-40%",
-    newPrice: "$120",
-    oldPrice: "$160",
-    reviews: "(88)",
-  },
-  {
-    id: 2,
-    img: sale1,
-    title: "AK-900 Wired Keyboard",
-    discount: "-35%",
-    newPrice: "$960",
-    oldPrice: "$1160",
-    reviews: "(75)",
-  },
-  {
-    id: 3,
-    img: sale2,
-    title: "IPS LCD Gaming Monitor",
-    discount: "-30%",
-    newPrice: "$370",
-    oldPrice: "$400",
-    reviews: "(99)",
-  },
-  {
-    id: 4,
-    img: sale3,
-    title: "S-Series Comfort Chair",
-    discount: "-25%",
-    newPrice: "$375",
-    oldPrice: "$400",
-    reviews: "(99)",
-  },
-  {
-    id: 5,
-    img: sale4,
-    title: "S-Series Comfort Chair",
-    discount: "-25%",
-    newPrice: "$375",
-    oldPrice: "$400",
-    reviews: "(99)",
-  },
-  {
-    id: 6,
-    img: sale5,
-    title: "S-Series Comfort Chair",
-    discount: "-25%",
-    newPrice: "$375",
-    oldPrice: "$400",
-    reviews: "(99)",
-  },
-  
+  { id: 1, img: sale, title: "HAVIT HV-G92 Gamepad", discount: "-40%", newPrice: "$120", oldPrice: "$160", reviews: 88, rating: 4 },
+  { id: 2, img: sale1, title: "AK-900 Wired Keyboard", discount: "-35%", newPrice: "$960", oldPrice: "$1160", reviews: 75, rating: 5 },
+  { id: 3, img: sale2, title: "IPS LCD Gaming Monitor", discount: "-30%", newPrice: "$370", oldPrice: "$400", reviews: 99, rating: 5 },
+  { id: 4, img: sale3, title: "S-Series Comfort Chair", discount: "-25%", newPrice: "$375", oldPrice: "$400", reviews: 99, rating: 4.5 },
+  { id: 5, img: sale4, title: "The north coat", discount: "-25%", newPrice: "$260", oldPrice: "$360", reviews: 65, rating: 5 },
+  { id: 6, img: sale5, title: "Gucci duffle bag", discount: "-25%", newPrice: "$960", oldPrice: "$1160", reviews: 99, rating: 4 },
 ];
 
 export const FlashSales = () => {
   return (
-    <section id="sale" className="flash-sales">
-      <span className="section-subtitle">Today's</span>
-      <h1 className="section-title">Flash Sales</h1>
+    <section className="bg-white font-sans p-8 md:p-12">
+      {/* Phần Tiêu Đề */}
+      <div className="mb-6">
+        <div className="flex items-center gap-4 mb-4">
+          <div className="w-5 h-10 bg-red-500 rounded"></div>
+          <p className="text-red-500 font-semibold">Today's</p>
+        </div>
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
+          Flash Sales
+        </h1>
+      </div>
 
-      <div className="product-sales">
+      {/* Lưới sản phẩm */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
         {products.map((item) => (
-          <div className="product-item" key={item.id}>
-            <div className="product-img-box">
-              <div className="discount-badge">{item.discount}</div>
-              <img src={item.img} alt={item.title} />
-              <div className="overlay">
-                <button>Add To Cart</button>
+          // 'group' rất quan trọng để kích hoạt hiệu ứng hover lên các element con
+          <div key={item.id} className="group flex flex-col">
+            <div className="relative overflow-hidden bg-gray-100 rounded-md">
+              {/* Discount Badge */}
+              <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded">
+                {item.discount}
               </div>
-              <div className="product-icons">
-                <i className="bx bx-heart"></i>
-                <i className="bx bx-cart"></i>
+
+              {/* Product Image */}
+              <img src={item.img} alt={item.title} className="w-full h-auto object-cover aspect-square p-6 md:p-10" />
+
+              {/* Overlay with Add To Cart button - xuất hiện khi hover */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button className="bg-white text-black font-bold py-2 px-6 rounded hover:bg-red-500 transition-colors hover:text-white">
+                  Add To Cart
+                </button>
+              </div>
+
+              {/* Icons */}
+              <div className="absolute top-3 right-3 flex flex-col gap-2">
+                <button className="bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition-colors hover:text-red-600 ">
+                  <FaRegHeart />
+                </button>
+                <button className="bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition-colors hover:text-red-600 hover:animate-bounce">
+                  <FaShoppingCart />
+                </button>
               </div>
             </div>
-            <h6>{item.title}</h6>
-            <div className="price">
-              <span className="new">{item.newPrice}</span>
-              <span className="old">{item.oldPrice}</span>
-            </div>
-            <div className="stars">
-              <i className="bx bxs-star"></i>
-              <i className="bx bxs-star"></i>
-              <i className="bx bxs-star"></i>
-              <i className="bx bxs-star"></i>
-              <i className="bx bx-star"></i>
-              <span className="review">{item.reviews}</span>
+
+            {/* Product Info */}
+            <div className="mt-4">
+              <h6 className="font-semibold text-gray-800 truncate">{item.title}</h6>
+              <div className="mt-2 flex items-center gap-3">
+                <span className="text-red-500 font-bold">{item.newPrice}</span>
+                <span className="text-gray-400 line-through">{item.oldPrice}</span>
+              </div>
+              <div className="mt-2 flex items-center gap-1">
+                {/* Hiển thị sao dựa trên rating */}
+                {[...Array(5)].map((_, i) => (
+                  <FaStar key={i} className={i < Math.floor(item.rating) ? 'text-yellow-400' : 'text-gray-300'} />
+                ))}
+                <span className="ml-2 text-sm text-gray-500">({item.reviews})</span>
+              </div>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="btn-view-all">
-        <button>View All Products</button>
+      {/* Nút View All */}
+      <div className="mt-12 text-center">
+        <button className="bg-red-500 text-black font-semibold py-3 px-12 rounded-md hover:bg-red-600 hover:text-white transition-colors">
+          View All Products
+        </button>
       </div>
     </section>
   );

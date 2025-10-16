@@ -12,7 +12,6 @@ import { Login } from "./component/Login"
 import { Poster } from "./poster/Poster"
 import { FlashSales} from "./poster/FlashSales"
 import Category from "./poster/Category";
-
 function App() {
   const [theme, setTheme] = useState("light");
  useEffect(() => {
@@ -35,12 +34,7 @@ useEffect(() => {
   <>
    
      
-       <button
-        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        style={{ position: "fixed",  right: 30, zIndex: 999 }}
-      >
-        {theme === "light" ? "🌙 " : "☀️ "}
-      </button>
+       
 
       <Routes>
         {/* Trang chủ */}
