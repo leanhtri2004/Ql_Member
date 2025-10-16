@@ -12,6 +12,8 @@ import { Login } from "./component/Login"
 import { Poster } from "./poster/Poster"
 import { FlashSales} from "./poster/FlashSales"
 import Category from "./poster/Category";
+import { BestSellingProduct } from "./poster/BestSellingProduct";
+import Center from "./poster/Center";
 function App() {
   const [theme, setTheme] = useState("light");
  useEffect(() => {
@@ -56,6 +58,8 @@ useEffect(() => {
              <Poster />
              <FlashSales/>
              <Category/>
+             <BestSellingProduct />
+             <Center />
 
          </>} />
         {/* Trang đăng ký */}
