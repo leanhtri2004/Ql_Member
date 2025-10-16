@@ -14,6 +14,7 @@ import { FlashSales} from "./poster/FlashSales"
 import Category from "./poster/Category";
 import { BestSellingProduct } from "./poster/BestSellingProduct";
 import Center from "./poster/Center";
+import OurProduct from "./poster/OurProduct";
 function App() {
   const [theme, setTheme] = useState("light");
  useEffect(() => {
@@ -60,6 +61,7 @@ useEffect(() => {
              <Category/>
              <BestSellingProduct />
              <Center />
+             <OurProduct />
 
          </>} />
         {/* Trang đăng ký */}
