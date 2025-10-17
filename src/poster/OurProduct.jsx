@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { FaRegHeart, FaShoppingCart, FaStar, FaRegStar } from 'react-icons/fa';
-
+import { Button, DatePicker, Space } from 'antd';
 import food_dog from "../assets/img/food_dog.png";
 import Canon_camera from "../assets/img/Canon_camera.png";
 import latop from "../assets/img/latop.png";
@@ -10,7 +10,7 @@ import Car from "../assets/img/Car.png";
 import Shoes_Sense from "../assets/img/Shoes_Sense.png";
 import GP11 from "../assets/img/GP11.png";
 import jacket from "../assets/img/jacket.png";
-
+import { HomeOutlined, SettingFilled } from '@ant-design/icons';
 const EyeIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
 );
@@ -55,14 +55,14 @@ export const OurProduct = () => {
       
                     {/* Overlay with Add To Cart button - xuất hiện khi hover */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <button className="bg-white text-black font-bold py-2 px-6 rounded hover:bg-red-500 transition-colors hover:text-white">
+                      <Button className="bg-white text-black font-bold py-2 px-6 rounded hover:bg-red-500 transition-colors hover:text-white">
                         Add To Cart
-                      </button>
+                      </Button>
                     </div>
       
                     {/* Icons */}
                     <div className="absolute top-3 right-3 flex flex-col gap-2">
-                      <button className="bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition-colors hover:text-red-600 ">
+                      <button  className="bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition-colors hover:text-red-600 ">
                         <FaRegHeart />
                       </button>
                       <button className="bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition-colors hover:text-red-600 ">
@@ -91,10 +91,11 @@ export const OurProduct = () => {
             </div>
             {/* Nút View All */}
       <div className="mt-12 text-center">
-        <button className="bg-red-500 text-black font-semibold py-3 px-12 rounded-md hover:bg-red-600 hover:text-white transition-colors">
+        <Button type="dashed"   className="bg-red-500 text-white font-semibold py-3 px-12 rounded-md hover:bg-red-600 hover:text-white transition-colors">
           View All Products
-        </button>
+        </Button>
       </div>
+     
     </section>
   )
 }

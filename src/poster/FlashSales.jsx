@@ -1,11 +1,13 @@
 
 import { FaRegHeart, FaShoppingCart, FaStar, FaRegStar } from 'react-icons/fa';
+
 import sale from "../assets/img/sale.png";
 import sale1 from "../assets/img/sale1.png";
 import sale2 from "../assets/img/sale2.png";
 import sale3 from "../assets/img/sale3.png";
 import sale4 from "../assets/img/sale4.png";
 import sale5 from "../assets/img/sale5.png";
+import { Button } from 'antd';
 
 const products = [
   { id: 1, img: sale, title: "HAVIT HV-G92 Gamepad", discount: "-40%", newPrice: "$120", oldPrice: "$160", reviews: 88, rating: 4 },
@@ -83,9 +85,9 @@ export const FlashSales = () => {
 
       {/* Nút View All */}
       <div className="mt-12 text-center">
-        <button className="bg-red-500 text-black font-semibold py-3 px-12 rounded-md hover:bg-red-600 hover:text-white transition-colors">
+        <Button type="dashed"  className="bg-red-500 text-white font-semibold py-3 px-12 rounded-md hover:bg-red-600 hover:text-white transition-colors">
           View All Products
-        </button>
+        </Button >
       </div>
     </section>
   );
