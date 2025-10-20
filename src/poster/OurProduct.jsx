@@ -11,6 +11,10 @@ import Shoes_Sense from "../assets/img/Shoes_Sense.png";
 import GP11 from "../assets/img/GP11.png";
 import jacket from "../assets/img/jacket.png";
 import { HomeOutlined, SettingFilled } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
+import { allProducts } from '../data/products';
+import {useCart} from '../qlmuaban/CartContext.jsx';
+
 const EyeIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
 );
@@ -27,7 +31,10 @@ const products = [
 
 
 ];
+
 export const OurProduct = () => {
+  const { addToCart } = useCart();
+  const ourProductsList = allProducts.filter(product => product.status === "new");
   return (
     <section className="bg-white font-sans p-8 md:p-12">
       {/* Phần Tiêu Đề */}
@@ -40,9 +47,10 @@ export const OurProduct = () => {
           Explore Our Products
         </h1>
       </div>
+
+       {/* BƯỚC 4: Dùng mảng 'ourProductsList' đã lọc để map */}
        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
-              {products.map((item) => (
-                // 'group' rất quan trọng để kích hoạt hiệu ứng hover lên các element con
+              {ourProductsList.map((item) => ( // <-- SỬ DỤNG MẢNG MỚI
                 <div key={item.id} className="group flex flex-col">
                   <div className="relative overflow-hidden bg-gray-100 rounded-md">
                     {/* Discount Badge */}
@@ -53,9 +61,9 @@ export const OurProduct = () => {
                     {/* Product Image */}
                     <img src={item.img} alt={item.title} className="w-full h-auto object-cover aspect-square p-6 md:p-10" />
       
-                    {/* Overlay with Add To Cart button - xuất hiện khi hover */}
+                    {/* Overlay with Add To Cart button */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Button className="bg-white text-black font-bold py-2 px-6 rounded hover:bg-red-500 transition-colors hover:text-white">
+                      <Button onClick={()=>addToCart(item)} className="bg-white text-black font-bold py-2 px-6 rounded hover:bg-red-500 transition-colors hover:text-white">
                         Add To Cart
                       </Button>
                     </div>
@@ -73,13 +81,17 @@ export const OurProduct = () => {
       
                   {/* Product Info */}
                   <div className="mt-4">
+                    {/* Link này bây giờ sẽ trỏ đến /product/10, /product/11... */}
+                    <Link to={`/product/${item.id}`}>
                     <h6 className="font-semibold text-gray-800 truncate">{item.title}</h6>
+                   </Link>
                     <div className="mt-2 flex items-center gap-3">
                       <span className="text-red-500 font-bold">{item.newPrice}</span>
-                      {/* <span className="text-gray-400 line-through">{item.oldPrice}</span> */}
+                      {item.oldPrice && (
+                         <span className="text-gray-400 line-through">{item.oldPrice}</span>
+                      )}
                     </div>
                     <div className="mt-2 flex items-center gap-1">
-                      {/* Hiển thị sao dựa trên rating */}
                       {[...Array(5)].map((_, i) => (
                         <FaStar key={i} className={i < Math.floor(item.rating) ? 'text-yellow-400' : 'text-gray-300'} />
                       ))}
@@ -89,13 +101,22 @@ export const OurProduct = () => {
                 </div>
               ))}
             </div>
-            {/* Nút View All */}
-      <div className="mt-12 text-center">
+            
+      {/* Nút View All */}
+      {/* <div className="mt-12 text-center">
         <Button type="dashed"   className="bg-red-500 text-white font-semibold py-3 px-12 rounded-md hover:bg-red-600 hover:text-white transition-colors">
           View All Products
         </Button>
+      </div> */}
+      <div className="mt-12 text-center">
+        {/* 2. Thay <Button> bằng <Link> và trỏ "to" đến trang sản phẩm */}
+        <Link
+          to="/products"
+          className="bg-red-500 text-white font-semibold py-3 px-12 rounded-md hover:bg-red-600 transition-colors"
+        >
+          View All Products
+        </Link>
       </div>
-     
     </section>
   )
 }

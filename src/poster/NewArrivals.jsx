@@ -49,7 +49,7 @@ export const NewArrivals = () => {
     <section className="bg-white text-gray-900 font-sans p-8 md:p-16">
       {/* Phần tiêu đề */}
       <div className="mb-10 flex items-center gap-4">
-        <div className="h-10 w-1 rounded-full bg-red-600"></div>
+        <div className="w-5 h-10 bg-red-500 rounded"></div>
         <p className="text-red-600 font-semibold">Featured</p>
       </div>
       <h2 className="text-4xl font-bold mb-10">New Arrival</h2>

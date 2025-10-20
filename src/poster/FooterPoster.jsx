@@ -36,7 +36,7 @@ export const FooterPoster = () => {
     {/* === Cột 3: Account === */}
     <div className="flex flex-col gap-4">
             <h3 className="text-2xl font-bold text-white">Account</h3>
-            <a href="#" className="hover:text-white transition-colors">My Account</a>
+            <a href="#" className="hover:text-white transition-colors">Anh Tri</a>
             <a href="#" className="hover:text-white transition-colors">Login / Register</a>
             <a href="#" className="hover:text-white transition-colors">Cart</a>
             <a href="#" className="hover:text-white transition-colors">Wishlist</a>

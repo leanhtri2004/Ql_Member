@@ -8,7 +8,8 @@ import sale3 from "../assets/img/sale3.png";
 import sale4 from "../assets/img/sale4.png";
 import sale5 from "../assets/img/sale5.png";
 import { Button } from 'antd';
-
+import {useCart} from '../qlmuaban/CartContext.jsx';
+import { Link } from 'react-router-dom';
 const products = [
   { id: 1, img: sale, title: "HAVIT HV-G92 Gamepad", discount: "-40%", newPrice: "$120", oldPrice: "$160", reviews: 88, rating: 4 },
   { id: 2, img: sale1, title: "AK-900 Wired Keyboard", discount: "-35%", newPrice: "$960", oldPrice: "$1160", reviews: 75, rating: 5 },
@@ -19,6 +20,7 @@ const products = [
 ];
 
 export const FlashSales = () => {
+  const { addToCart } = useCart();
   return (
     <section className="bg-white font-sans p-8 md:p-12">
       {/* Phần Tiêu Đề */}
@@ -48,7 +50,7 @@ export const FlashSales = () => {
 
               {/* Overlay with Add To Cart button - xuất hiện khi hover */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <button className="bg-white text-black font-bold py-2 px-6 rounded hover:bg-red-500 transition-colors hover:text-white">
+                <button onClick={()=>addToCart(item)}  className="bg-white text-black font-bold py-2 px-6 rounded hover:bg-red-500 transition-colors hover:text-white">
                   Add To Cart
                 </button>
               </div>
@@ -58,7 +60,7 @@ export const FlashSales = () => {
                 <button className="bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition-colors hover:text-red-600 ">
                   <FaRegHeart />
                 </button>
-                <button className="bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition-colors hover:text-red-600 hover:animate-bounce">
+                <button onClick={()=>addToCart(item)} className="bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition-colors hover:text-red-600 hover:animate-bounce">
                   <FaShoppingCart />
                 </button>
               </div>
@@ -66,7 +68,10 @@ export const FlashSales = () => {
 
             {/* Product Info */}
             <div className="mt-4">
+
+              <Link to={`/product/${item.id}`}>
               <h6 className="font-semibold text-gray-800 truncate">{item.title}</h6>
+              </Link>
               <div className="mt-2 flex items-center gap-3">
                 <span className="text-red-500 font-bold">{item.newPrice}</span>
                 <span className="text-gray-400 line-through">{item.oldPrice}</span>
@@ -84,10 +89,19 @@ export const FlashSales = () => {
       </div>
 
       {/* Nút View All */}
-      <div className="mt-12 text-center">
+      {/* <div className="mt-12 text-center">
         <Button type="dashed"  className="bg-red-500 text-white font-semibold py-3 px-12 rounded-md hover:bg-red-600 hover:text-white transition-colors">
           View All Products
         </Button >
+      </div> */}
+      <div className="mt-12 text-center">
+        {/* 2. Thay <Button> bằng <Link> và trỏ "to" đến trang sản phẩm */}
+        <Link
+          to="/products"
+          className="bg-red-500 text-white font-semibold py-3 px-12 rounded-md hover:bg-red-600 transition-colors"
+        >
+          View All Products
+        </Link>
       </div>
     </section>
   );

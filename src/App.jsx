@@ -17,7 +17,10 @@ import Center from "./poster/Center";
 import OurProduct from "./poster/OurProduct";
 import { NewArrivals } from "./poster/NewArrivals";
 import { FooterPoster } from "./poster/FooterPoster";
+import { ProductDetailPage } from "./qlmuaban/ProductDetailPage";
+import { AllProductsPage } from "./qlmuaban/AllProductsPage";
 function App() {
+  
   const [theme, setTheme] = useState("light");
  useEffect(() => {
     const root = document.documentElement; // chính là thẻ <html>
@@ -72,6 +75,8 @@ useEffect(() => {
         <Route path="/signup" element={<Register />} />
          {/* Trang đăng nhập */}
         <Route path="/login" element={<Login />} />
+        <Route path="/product/:id" element={<ProductDetailPage />} />
+        <Route path="/products" element={<AllProductsPage />} />
       </Routes>
   </>
   )
