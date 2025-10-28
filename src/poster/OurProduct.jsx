@@ -34,7 +34,7 @@ const products = [
 export const OurProduct = () => {
   useEffect(()=>{
     AOS.init({
-      duration:1200,
+      duration:1000,
       once:false,
     });
   },[]);

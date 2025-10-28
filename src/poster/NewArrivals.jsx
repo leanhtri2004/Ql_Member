@@ -68,14 +68,19 @@ export const NewArrivals = () => {
   return (
     <section className="bg-white text-gray-900 font-sans p-8 md:p-16">
       {/* Phần tiêu đề */}
-      <div className="mb-10 flex items-center gap-4"
+      <div className="mb-6"
       data-aos='fade-right'
       data-aos-duration='800'
       >
-        <div className="w-5 h-10 bg-red-500 rounded"></div>
-        <p className="text-red-600 font-semibold">Featured</p>
+        <div className="flex items-center gap-4 mb-4">
+          <div className="w-5 h-10 bg-red-500 rounded"></div>
+          <p className="text-red-500 font-semibold">Featured</p>
+        </div>
+        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-800">
+          New Arrival
+        </h1>
       </div>
-      <h2 className="text-4xl font-bold mb-10">New Arrival</h2>
+
 
       {/* Phần lưới sản phẩm */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24" style={{ minHeight: '600px' }}>

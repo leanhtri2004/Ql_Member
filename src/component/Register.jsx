@@ -1,16 +1,32 @@
+
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseconnect";
 import { Link, useNavigate } from "react-router-dom";
 
+// HÀM KIỂM TRA LỖI ĐÁNH MÁY TÊN MIỀN
+const checkEmailTypos = (email) => {
+  const domain = email.split('@')[1];
+
+  if (!domain) return false;
+
+  const commonTypos = [
+    'gmeo.com', 'gail.com', 'gmal.com', 'gmil.com',
+    'hotmal.com', 'outloook.com',
+    'yhaoo.com', 'yahho.com'
+  ];
+
+  return commonTypos.includes(domain.toLowerCase());
+};
+
 export const Register = () => {
-  // State quản lý form
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-const navigate = useNavigate();
+  const navigate = useNavigate();
+
   // Hàm xử lý đăng ký
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -22,9 +38,16 @@ const navigate = useNavigate();
       return;
     }
 
+    // ÁP DỤNG KIỂM TRA TÊN MIỀN
+    if (checkEmailTypos(email)) {
+      setError("⚠️ Tên miền email có vẻ bị sai chính tả. Vui lòng kiểm tra lại.");
+      return;
+    }
+    
+
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-     alert("Đăng ký thành công! Hãy đăng nhập.");
+      alert("Đăng ký thành công! Hãy đăng nhập.");
       navigate("/login");
       setEmail("");
       setPassword("");
