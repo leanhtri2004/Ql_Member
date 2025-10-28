@@ -1,5 +1,6 @@
-import React from 'react'
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import React, { useEffect } from 'react'; // Bổ sung useEffect
 import { FaRegHeart, FaShoppingCart, FaStar, FaRegStar } from 'react-icons/fa';
 import { Button, DatePicker, Space } from 'antd';
 import food_dog from "../assets/img/food_dog.png";
@@ -28,17 +29,25 @@ const products = [
   { id: 7, img: GP11, title: "Gucci duffle bag",   status: "new",    newPrice: "$960",  reviews: 99, rating: 4 },
   { id: 8, img: jacket, title: "Gucci duffle bag",      status: "new", newPrice: "$960",  reviews: 99, rating: 4 },
 
-
-
 ];
 
 export const OurProduct = () => {
+  useEffect(()=>{
+    AOS.init({
+      duration:1200,
+      once:false,
+    });
+  },[]);
   const { addToCart } = useCart();
   const ourProductsList = allProducts.filter(product => product.status === "new");
+  // const delay = products.id * 150;
   return (
     <section className="bg-white font-sans p-8 md:p-12">
       {/* Phần Tiêu Đề */}
-      <div className="mb-6">
+      <div className="mb-6"
+      data-aos='fade-down'
+      data-aos-duration='800'
+      >
         <div className="flex items-center gap-4 mb-4">
           <div className="w-5 h-10 bg-red-500 rounded"></div>
           <p className="text-red-500 font-semibold">Our products</p>
@@ -50,57 +59,67 @@ export const OurProduct = () => {
 
        {/* BƯỚC 4: Dùng mảng 'ourProductsList' đã lọc để map */}
        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
-              {ourProductsList.map((item) => ( // <-- SỬ DỤNG MẢNG MỚI
-                <div key={item.id} className="group flex flex-col">
-                  <div className="relative overflow-hidden bg-gray-100 rounded-md">
+    {ourProductsList.map((item, index) => { 
+
+        const delayValue = (index * 100).toString(); 
+
+        return ( 
+            <div 
+                key={item.id} 
+                className="group flex flex-col"
+                data-aos='fade-up' 
+                data-aos-duration='500'
+                data-aos-delay={delayValue} // Dùng biến đã tính toán
+            >
+                <div className="relative overflow-hidden bg-gray-100 rounded-md">
                     {/* Discount Badge */}
                     <div className="absolute top-3 left-3 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded">
-                      {item.status}
+                        {item.status}
                     </div>
-      
+
                     {/* Product Image */}
                     <img src={item.img} alt={item.title} className="w-full h-auto object-cover aspect-square p-6 md:p-10" />
-      
+
                     {/* Overlay with Add To Cart button */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Button onClick={()=>addToCart(item)} className="bg-white text-black font-bold py-2 px-6 rounded hover:bg-red-500 transition-colors hover:text-white">
-                        Add To Cart
-                      </Button>
+                        <Button onClick={()=>addToCart(item)} className="bg-white text-black font-bold py-2 px-6 rounded hover:bg-red-500 transition-colors hover:text-white">
+                            Add To Cart
+                        </Button>
                     </div>
-      
+
                     {/* Icons */}
                     <div className="absolute top-3 right-3 flex flex-col gap-2">
-                      <button  className="bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition-colors hover:text-red-600 ">
-                        <FaRegHeart />
-                      </button>
-                      <button className="bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition-colors hover:text-red-600 ">
-                         <EyeIcon />
-                      </button>
+                        <button  className="bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition-colors hover:text-red-600 ">
+                            <FaRegHeart />
+                        </button>
+                        <button className="bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition-colors hover:text-red-600 ">
+                            <EyeIcon />
+                        </button>
                     </div>
-                  </div>
-      
-                  {/* Product Info */}
-                  <div className="mt-4">
-                    {/* Link này bây giờ sẽ trỏ đến /product/10, /product/11... */}
+                </div>
+
+                {/* Product Info */}
+                <div className="mt-4">
                     <Link to={`/product/${item.id}`}>
-                    <h6 className="font-semibold text-gray-800 truncate">{item.title}</h6>
-                   </Link>
+                        <h6 className="font-semibold text-gray-800 truncate">{item.title}</h6>
+                    </Link>
                     <div className="mt-2 flex items-center gap-3">
-                      <span className="text-red-500 font-bold">{item.newPrice}</span>
-                      {item.oldPrice && (
-                         <span className="text-gray-400 line-through">{item.oldPrice}</span>
-                      )}
+                        <span className="text-red-500 font-bold">{item.newPrice}</span>
+                        {item.oldPrice && (
+                            <span className="text-gray-400 line-through">{item.oldPrice}</span>
+                        )}
                     </div>
                     <div className="mt-2 flex items-center gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <FaStar key={i} className={i < Math.floor(item.rating) ? 'text-yellow-400' : 'text-gray-300'} />
-                      ))}
-                      <span className="ml-2 text-sm text-gray-500">({item.reviews})</span>
+                        {[...Array(5)].map((_, i) => (
+                            <FaStar key={i} className={i < Math.floor(item.rating) ? 'text-yellow-400' : 'text-gray-300'} />
+                        ))}
+                        <span className="ml-2 text-sm text-gray-500">({item.reviews})</span>
                     </div>
-                  </div>
                 </div>
-              ))}
             </div>
+        );
+    })}
+</div>
             
       {/* Nút View All */}
       {/* <div className="mt-12 text-center">

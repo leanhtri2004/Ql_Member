@@ -1,4 +1,7 @@
-import React from 'react'
+
+import React, { useEffect } from 'react'; // Bổ sung useEffect
+import AOS from 'aos'; // Import thư viện AOS
+import 'aos/dist/aos.css'; // Import CSS của AOS
 import sale5 from "../assets/img/sale5.png";
 import sale4 from "../assets/img/sale4.png";
 import best from "../assets/img/best.png";
@@ -16,12 +19,23 @@ const StarIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
 );
 export const BestSellingProduct = () => {
+    useEffect(() => {
+        AOS.init({
+          duration:1000, // Đã điều chỉnh nhẹ cho phù hợp hơn
+          once: false,    // Hiệu ứng chạy lại mỗi khi cuộn vào
+        });
+      }, []);
     const ProductCard = ({ product }) => {
     // Destructuring props để code gọn hơn
     const { image, name, price, originalPrice, reviews } = product;
-
+        const delay = product.id * 150;
     return (
-        <div className="group">
+        <div className="group"
+        
+        data-aos='fade-up'
+        data-aos-duration='1000'
+        data-aos-delay={delay}
+        >
             <div className="relative bg-gray-100 rounded-md flex items-center justify-center p-4 aspect-square mb-4">
                 <img src={image} alt={name} className="w-3/4 h-3/4 object-contain" />
                 
@@ -62,7 +76,10 @@ export const BestSellingProduct = () => {
     ]
   return (
     <section className='bg-white p-8 font-sans'>
-        <div className='mb-8'>
+        <div className='mb-8'
+        data-aos = 'fade-up'
+        data-aos-duration='800'
+        >
             <div className='flex items-center mb-4'>
                 <div className='w-5 h-9 bg-red-500 rounded mr-3'></div>
                 <span className='text-red-500 font-semibold'>This Month</span>
@@ -70,7 +87,9 @@ export const BestSellingProduct = () => {
             </div>
             <div className='flex flex-wrap justify-between items-end gap-4'>
                 <h2 className='text-4xl font-bold text-black'>Best Selling Product</h2>
-                <a href="#" className='bg-red-500 text-black px-8 py-3 rounded-md hover:bg-red-600 hover:text-white transition-colors'>
+                <a href="#" className='bg-red-500 text-black px-8 py-3 rounded-md hover:bg-red-600 hover:text-white transition-colors'
+                data-aos='zoom-in'
+                data-aos-delay='500'>
                     View All
                 </a>
             </div>

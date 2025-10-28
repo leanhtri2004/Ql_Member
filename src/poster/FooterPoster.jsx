@@ -73,7 +73,7 @@ export const FooterPoster = () => {
 
         {/* --- Dòng kẻ ngang và Copyright --- */}
         <div className="border-t border-gray-800 mt-16 pt-6 text-center text-gray-500">
-          <p>&copy; Copyright Rimel 2022. All right reserved</p>
+          <p>&copy; Copyright Rimel 2025. All right reserved</p>
         </div>
       </div>
 
