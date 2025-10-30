@@ -41,7 +41,7 @@ export const Poster = () => {
           </div>
 
           {/* Hamburger Menu: Hiện trên mobile, ẩn trên desktop */}
-          <div className="md:hidden text-3xl cursor-pointer">
+          <div className="md:hidden text-3xl text-white cursor-pointer">
             {/* <i className="bx bx-menu"></i> */}
             <HiMenu />
             {/* <HiMenu /> */}
@@ -50,8 +50,8 @@ export const Poster = () => {
       </header>
       
       {/* 3. Phần Content (Giá, Tên, Nút) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center 
-                      md:left-auto md:right-[30%] md:bottom-1/2 md:-translate-x-0 md:-translate-y-1/2 md:items-start md:text-left">
+      <div className="absolute top-1/2  left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center 
+                      md:left-auto md:right-[23%] md:bottom-1/2 md:-translate-x-0 md:-translate-y-1/2 md:items-start md:text-left">
         <h1 className="text-5xl font-bold text-red-500">134$</h1>
         <div className="flex flex-col">
           <h2 className="text-xl font-bold">JORDAN</h2>
